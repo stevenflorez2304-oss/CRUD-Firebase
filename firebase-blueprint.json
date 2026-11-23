@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Sneaker product stored in user-scoped inventory with soft-delete tombstone and sync metadata.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable UUID matching the Firestore document ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "Sneaker model name (1 to 80 characters)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Sneaker details such as brand, colorway, and size (0 to 500 characters)."
+        },
+        "priceCop": {
+          "type": "integer",
+          "description": "Price in Colombian Pesos (strictly positive integer)."
+        },
+        "quantity": {
+          "type": "integer",
+          "description": "Available stock count (non-negative integer)."
+        },
+        "updatedAt": {
+          "type": "integer",
+          "description": "Last local modification timestamp in epoch milliseconds."
+        },
+        "serverUpdatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp populated via FieldValue.serverTimestamp()."
+        },
+        "isDeleted": {
+          "type": "boolean",
+          "description": "Soft-delete tombstone flag for Room/Firestore synchronization."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "priceCop",
+        "quantity",
+        "updatedAt",
+        "serverUpdatedAt",
+        "isDeleted"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{uid}/products/{productId}": {
+      "schema": {
+        "$ref": "#/entities/Product"
+      },
+      "description": "User-scoped sneaker inventory collection synchronized with local Room persistence."
+    }
+  }
+}
