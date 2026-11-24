@@ -10,7 +10,7 @@ class SaveProductUseCase @Inject constructor(
     suspend operator fun invoke(product: Product) {
         require(product.name.isNotBlank()) { "Nombre obligatorio" }
         require(product.name.length <= 80) { "Maximo 80 caracteres" }
-        require(product.description.length <= 500) { "Descripcion maximo 500 caracteres" }
+        require(product.description.length <= 500)
         require(product.priceCop > 0) { "El precio debe ser positivo" }
         require(product.quantity >= 0) { "Cantidad invalida" }
         repository.save(product)

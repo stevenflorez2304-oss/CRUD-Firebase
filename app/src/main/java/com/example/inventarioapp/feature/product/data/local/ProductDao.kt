@@ -14,9 +14,6 @@ interface ProductDao {
     )
     fun observeVisible(): Flow<List<ProductEntity>>
 
-    @Query("SELECT COUNT(*) FROM products")
-    suspend fun countAll(): Int
-
     @Query("SELECT * FROM products WHERE id = :id LIMIT 1")
     suspend fun find(id: String): ProductEntity?
 
@@ -25,9 +22,6 @@ interface ProductDao {
 
     @Upsert
     suspend fun upsert(product: ProductEntity)
-
-    @Upsert
-    suspend fun upsertAll(products: List<ProductEntity>)
 
     // Solo marca sincronizada una version que no haya cambiado.
     @Query(

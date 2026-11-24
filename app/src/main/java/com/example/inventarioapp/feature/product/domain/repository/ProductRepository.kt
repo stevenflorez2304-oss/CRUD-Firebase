@@ -7,7 +7,6 @@ data class SyncReport(val uploaded: Int, val downloaded: Int)
 
 interface ProductRepository {
     fun observeProducts(): Flow<List<Product>>
-    suspend fun seedInitialInventoryIfNeeded()
     suspend fun findById(id: String): Product?
     suspend fun save(product: Product)
     suspend fun delete(id: String)
