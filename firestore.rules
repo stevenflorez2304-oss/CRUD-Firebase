@@ -1,68 +1,28 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if false;
-    }
-
-    function isSignedIn() {
-      return request.auth != null;
-    }
-
-    function isOwner(uid) {
-      return request.auth.uid == uid;
-    }
-
-    function isValidId(id) {
-      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
-    }
-
-    function incoming() {
-      return request.resource.data;
-    }
-
-    function existing() {
-      return resource.data;
-    }
-
-    function isValidProduct(d, productId) {
-      return d.keys().hasAll([
-          'id', 'name', 'description', 'priceCop',
-          'quantity', 'updatedAt', 'serverUpdatedAt', 'isDeleted'
-        ])
-        && d.keys().hasOnly([
-          'id', 'name', 'description', 'priceCop',
-          'quantity', 'updatedAt', 'serverUpdatedAt', 'isDeleted'
-        ])
-        && d.id is string && d.id == productId
-        && d.name is string && d.name.size() > 0 && d.name.size() <= 80
-        && d.description is string && d.description.size() <= 500
-        && d.priceCop is int && d.priceCop > 0
-        && d.quantity is int && d.quantity >= 0
-        && d.updatedAt is int && d.updatedAt >= 0
-        && d.serverUpdatedAt is timestamp && d.serverUpdatedAt <= request.time
-        && d.isDeleted is bool;
-    }
-
     match /users/{uid}/products/{productId} {
-      allow get: if isSignedIn() && isValidId(uid) && isValidId(productId) && isOwner(uid);
-      allow list: if isSignedIn() && isValidId(uid) && isOwner(uid);
-      allow create: if isSignedIn()
-        && isValidId(uid)
-        && isValidId(productId)
-        && isOwner(uid)
-        && isValidProduct(incoming(), productId);
-      allow update: if isSignedIn()
-        && isValidId(uid)
-        && isValidId(productId)
-        && isOwner(uid)
-        && isValidProduct(incoming(), productId)
-        && incoming().id == existing().id
-        && incoming().diff(existing()).affectedKeys().hasOnly([
-          'name', 'description', 'priceCop',
-          'quantity', 'updatedAt', 'serverUpdatedAt', 'isDeleted'
-        ]);
-      allow delete: if isSignedIn() && isValidId(uid) && isValidId(productId) && isOwner(uid);
+      function isOwner() {
+        return request.auth != null && request.auth.uid == uid;
+      }
+      function validProduct() {
+        let d = request.resource.data;
+        return d.keys().hasOnly([
+            'id', 'name', 'description', 'priceCop',
+            'quantity', 'updatedAt', 'isDeleted'
+          ])
+          && d.id == productId
+          && d.name is string && d.name.size() > 0
+          && d.name.size() <= 80
+          && d.description is string && d.description.size() <= 500
+          && d.priceCop is int && d.priceCop >= 0
+          && d.quantity is int && d.quantity >= 0
+          && d.updatedAt is int
+          && d.isDeleted is bool;
+      }
+      allow read: if isOwner();
+      allow create, update: if isOwner() && validProduct();
+      allow delete: if isOwner();
     }
   }
 }
