@@ -1,0 +1,6 @@
+{
+  "name": "InventarioApp",
+  "description": "Inventario de tenis (Nike, New Balance, Adidas) con arquitectura MVVM, Room, Hilt, Navigation 3 y sincronización con Firebase Firestore.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
