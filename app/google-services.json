@@ -1,81 +1,26 @@
 {
   "project_info": {
-    "project_number": "85004672479",
-    "project_id": "gen-lang-client-0022725865",
-    "storage_bucket": "gen-lang-client-0022725865.firebasestorage.app"
+    "project_number": "178827018675",
+    "project_id": "inventarioapp-e5cae",
+    "storage_bucket": "inventarioapp-e5cae.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:85004672479:android:df0a5db914a5ab13b1b86a",
+        "mobilesdk_app_id": "1:178827018675:android:718629cec3c686f6b08bc6",
         "android_client_info": {
-          "package_name": "com.aistudio.inventarioapp.k7m4xp"
+          "package_name": "com.example.inventarioapp"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "85004672479-b7cds9apjpmfssce2rmhldors3no5bui.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.aistudio.inventarioapp.k7m4xp",
-            "certificate_hash": "1357ee2d3810ae447d684fee03687116c0ce2415"
-          }
-        },
-        {
-          "client_id": "85004672479-842v9rf2hgme45uffrd10rof4np9n62p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC2apVJQIv0_MihhLvsqLr87ZOVy7LQ4v4"
+          "current_key": "AIzaSyCIFjNmf-W4SU4j3tt-BmOejK68KCqJ9uA"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "85004672479-842v9rf2hgme45uffrd10rof4np9n62p.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:85004672479:android:980da35b6c0b648eb1b86a",
-        "android_client_info": {
-          "package_name": "com.aistudio.inventarioapp.kxmzpq"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "85004672479-k2raa0169drksv3pljdhcu5dfrk7ma2c.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.aistudio.inventarioapp.kxmzpq",
-            "certificate_hash": "1fcd11776f8dddf721fb5f24afbbbc470d721b98"
-          }
-        },
-        {
-          "client_id": "85004672479-842v9rf2hgme45uffrd10rof4np9n62p.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC2apVJQIv0_MihhLvsqLr87ZOVy7LQ4v4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "85004672479-842v9rf2hgme45uffrd10rof4np9n62p.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
